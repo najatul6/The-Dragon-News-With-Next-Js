@@ -1,6 +1,7 @@
-import { Box, Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
+import { Box, Card, CardActionArea, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 import Image from 'next/image';
 import sidebarNews from "@/assets/Side Top News.png"
+import sidebarBanner from "@/assets/side banner.png"
 
 const SideBar = () => {
     return (
@@ -26,6 +27,81 @@ const SideBar = () => {
                     </CardContent>
                 </CardActionArea>
             </Card>
+            <Box className="my-6">
+                <hr />
+                <Grid className='my-6' container spacing={2}>
+                    <Grid item xs={6} md={4}>
+                        <Image className='rounded-xl' src={sidebarNews} width={81} height={81} alt='news' />
+                    </Grid>
+                    <Grid item xs={6} md={8}>
+                        <Typography fontWeight={500} color="black">
+                            Bitcoin Climbs as Elon Musk Says Tesla Likely to Accept it
+                        </Typography>
+                        <Typography gutterBottom>
+                            Mar 18 2023
+                        </Typography>
+                    </Grid>
+                </Grid>
+                <hr />
+                <Grid className='my-6' container spacing={2}>
+                    <Grid item xs={6} md={4}>
+                        <Image className='rounded-xl' src={sidebarNews} width={81} height={81} alt='news' />
+                    </Grid>
+                    <Grid item xs={6} md={8}>
+                        <Typography fontWeight={500} color="black">
+                            Bitcoin Climbs as Elon Musk Says Tesla Likely to Accept it
+                        </Typography>
+                        <Typography gutterBottom>
+                            Mar 18 2023
+                        </Typography>
+                    </Grid>
+                </Grid>
+                <hr />
+                <Grid className='my-6' container spacing={2}>
+                    <Grid item xs={6} md={4}>
+                        <Image className='rounded-xl' src={sidebarNews} width={81} height={81} alt='news' />
+                    </Grid>
+                    <Grid item xs={6} md={8}>
+                        <Typography fontWeight={500} color="black">
+                            Bitcoin Climbs as Elon Musk Says Tesla Likely to Accept it
+                        </Typography>
+                        <Typography gutterBottom>
+                            Mar 18 2023
+                        </Typography>
+                    </Grid>
+                </Grid>
+                <hr />
+                <Grid className='my-6' container spacing={2}>
+                    <Grid item xs={6} md={4}>
+                        <Image className='rounded-xl' src={sidebarNews} width={81} height={81} alt='news' />
+                    </Grid>
+                    <Grid item xs={6} md={8}>
+                        <Typography fontWeight={500} color="black">
+                            Bitcoin Climbs as Elon Musk Says Tesla Likely to Accept it
+                        </Typography>
+                        <Typography gutterBottom>
+                            Mar 18 2023
+                        </Typography>
+                    </Grid>
+                </Grid>
+                <hr />
+                <Grid className='my-6' container spacing={2}>
+                    <Grid item xs={6} md={4}>
+                        <Image className='rounded-xl' src={sidebarNews} width={81} height={81} alt='news' />
+                    </Grid>
+                    <Grid item xs={6} md={8}>
+                        <Typography fontWeight={500} color="black">
+                            Bitcoin Climbs as Elon Musk Says Tesla Likely to Accept it
+                        </Typography>
+                        <Typography gutterBottom>
+                            Mar 18 2023
+                        </Typography>
+                    </Grid>
+                </Grid>
+            </Box>
+            <Box className="my-4">
+                <Image className='rounded-xl' src={sidebarBanner} width={360} height={400} alt='side banner' />
+            </Box>
         </Box>
     );
 };
