@@ -1,11 +1,54 @@
-import { Box } from "@mui/material";
+import { Box, Card, CardActionArea, CardContent, CardMedia, Divider, Grid, Typography } from "@mui/material";
+import Image from "next/image";
+import { getCategoriesNews } from "@/utils/getCategoriesNews";
 
-const DynamicNewsPage = ({searchParams}) => {
+const DynamicNewsPage = async ({ searchParams }) => {
+    const { data } = await getCategoriesNews(searchParams.category)
     return (
         <Box>
-            <h1>
-                News for: {searchParams.categoriesId}
-            </h1>
+            <Typography variant="h2" width={850} className="border-red-600 border-b-4 uppercase font-bold" sx={{ mt: 2.5 }}>
+                {searchParams.category}
+            </Typography>
+            <Divider />
+            <Grid className="my-5" container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                {
+                    data?.map(news => (
+                        <Grid key={news.id} item xs={6}>
+                            <Card>
+                                <CardActionArea>
+                                    <CardMedia>
+                                        <Image className="h-[250px]" src={news?.thumbnail_url} width={800} height={300} alt="latest News" />
+                                    </CardMedia>
+                                    <CardContent>
+                                        <p className="text-white font-bold bg-red-600 py-2 px-3 rounded-xl inline-block my-5">
+                                            {news?.category}
+                                        </p>
+                                        <Typography gutterBottom>
+                                            {news?.title}
+                                        </Typography>
+                                        <Typography gutterBottom className="my-3">
+                                            By {news?.author?.name} - {news?.author?.published_date}
+                                        </Typography>
+
+                                        {
+                                            news?.details.length > 200 ?
+                                                <Typography variant="body2" color="text.secondary">
+                                                    {news?.details.slice(1,200)}.................
+                                                </Typography>
+                                                :
+                                                <Typography variant="body2" color="text.secondary">
+                                                   { news?.details}
+                                                </Typography>
+                                        }
+
+                                    </CardContent>
+                                </CardActionArea>
+                            </Card>
+                        </Grid>
+                    ))
+                }
+
+            </Grid>
         </Box>
     );
 };
