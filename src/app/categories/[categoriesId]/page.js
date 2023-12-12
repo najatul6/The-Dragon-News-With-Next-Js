@@ -1,6 +1,7 @@
 import { Box, Card, CardActionArea, CardContent, CardMedia, Divider, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import { getCategoriesNews } from "@/utils/getCategoriesNews";
+import Link from "next/link";
 
 const DynamicNewsPage = async ({ searchParams }) => {
     const { data } = await getCategoriesNews(searchParams.category)
@@ -14,36 +15,45 @@ const DynamicNewsPage = async ({ searchParams }) => {
                 {
                     data?.map(news => (
                         <Grid key={news.id} item xs={6}>
-                            <Card>
-                                <CardActionArea>
-                                    <CardMedia>
-                                        <Image className="h-[250px]" src={news?.thumbnail_url} width={800} height={300} alt="latest News" />
-                                    </CardMedia>
-                                    <CardContent>
-                                        <p className="text-white font-bold bg-red-600 py-2 px-3 rounded-xl inline-block my-5">
-                                            {news?.category}
-                                        </p>
-                                        <Typography gutterBottom>
-                                            {news?.title}
-                                        </Typography>
-                                        <Typography gutterBottom className="my-3">
-                                            By {news?.author?.name} - {news?.author?.published_date}
-                                        </Typography>
+                            <Link href={`/${news.category.toLowerCase()}/${news._id}`}>
+                                <Card>
+                                    <CardActionArea>
+                                        <CardMedia
+                                            sx={{
+                                                "& img": {
+                                                    width: "100%",
+                                                    height: "250px",
+                                                },
+                                            }}
+                                        >
+                                            <Image className="h-[250px]" src={news?.thumbnail_url} width={800} height={300} alt="latest News" />
+                                        </CardMedia>
+                                        <CardContent>
+                                            <p className="text-white font-bold bg-red-600 py-2 px-3 rounded-xl inline-block my-5">
+                                                {news?.category}
+                                            </p>
+                                            <Typography variant="h6" gutterBottom>
+                                                {news?.title.length > 30 ? news.title.slice(0, 30) + "..." : news.title}
+                                            </Typography>
+                                            <Typography gutterBottom className="my-3">
+                                                By {news?.author?.name} - {news?.author?.published_date}
+                                            </Typography>
 
-                                        {
-                                            news?.details.length > 200 ?
-                                                <Typography variant="body2" color="text.secondary">
-                                                    {news?.details.slice(1,200)}.................
-                                                </Typography>
-                                                :
-                                                <Typography variant="body2" color="text.secondary">
-                                                   { news?.details}
-                                                </Typography>
-                                        }
+                                            {
+                                                news?.details.length > 200 ?
+                                                    <Typography variant="body2" color="text.secondary">
+                                                        {news?.details.slice(1, 200)} ...
+                                                    </Typography>
+                                                    :
+                                                    <Typography variant="body2" color="text.secondary">
+                                                        {news?.details}
+                                                    </Typography>
+                                            }
 
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
+                                        </CardContent>
+                                    </CardActionArea>
+                                </Card>
+                            </Link>
                         </Grid>
                     ))
                 }
