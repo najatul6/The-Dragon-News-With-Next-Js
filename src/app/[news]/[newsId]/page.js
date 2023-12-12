@@ -35,7 +35,7 @@ const NewsDetailsPage = async ({ params }) => {
                                 By {news.author.name}
                             </Typography>
                             <Typography>
-                                &#9758; {news.author.published_date}
+                                &#8594; {news.author.published_date}
                             </Typography>
                         </Box>
                         <Typography style={{

@@ -12,7 +12,7 @@ const HomePage = () => {
         <LatestNews />
       </Grid>
       <Grid item xs={4}>
-        <Typography className="my-5" fontSize={28}  fontWeight={600}>
+        <Typography className="my-5" fontSize={28} fontWeight={600}>
           Sylhet
         </Typography>
         <SideBar />
